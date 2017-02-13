@@ -1,0 +1,26 @@
+{
+  "short_name": "COER Portal",
+  "name": "College of Engineering, Roorkee Portal",
+  "icons": [
+    {
+      "src": "/assets/coer-logo-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/coer-logo-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/coer-logo-196x196.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "theme_color": "#0a64a0",
+  "background_color": "#501eb4",
+  "display": "standalone",
+  "orientation": "portrait"
+}

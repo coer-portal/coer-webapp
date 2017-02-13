@@ -1,6 +1,7 @@
 import path from "path";
 import webpack from "webpack";
 import fs from "fs";
+import NodeExternals from 'webpack-node-externals'
 
 module.exports = {
 	context: path.resolve(__dirname, './src/server'),
@@ -10,15 +11,35 @@ module.exports = {
 		filename: 'server.bundle.js',
 	},
 	target: 'node',
-	devtool: 'source-map',
+	externals: [NodeExternals({
+		whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i]
+	})],
 	module: {
-		rules: [{
-			test: /\.(js|jsx)$/,
-			exclude: /node_modules/,
-			use: [{
-				loader: 'babel-loader',
-				options: {presets: ['es2015', 'react', 'stage-0']}
+		rules: [
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				use: [{
+					loader: 'babel-loader',
+					options: {presets: ['es2015', 'react', 'stage-0']}
+				}]
+			},
+			{
+				test: /\.(sass|scss)$/,
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader'
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							includePaths: ["node_modules"]
+						}
+					}
+				]
 			}]
-		}]
 	}
 };

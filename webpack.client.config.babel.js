@@ -1,6 +1,6 @@
 import path from "path";
 import webpack from "webpack";
-import fs from "fs";
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 
 module.exports = {
 	context: path.resolve(__dirname, './src/client'),
@@ -9,8 +9,6 @@ module.exports = {
 		path: path.resolve(__dirname, './dist'),
 		filename: 'client.bundle.js',
 	},
-	target: 'node',
-	devtool: 'source-map',
 	module: {
 		rules: [
 			{
@@ -28,11 +26,11 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'commons',
-			filename: 'common.js',
-			minChunks: 2
-		}),
+		// new webpack.optimize.CommonsChunkPlugin({
+		// 	name: 'commons',
+		// 	filename: 'common.js',
+		// minChunks: 2
+		// }),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 		}),
@@ -43,6 +41,11 @@ module.exports = {
 			beautify: false,
 			dead_code: true
 		}),
-
+		new OptimizeCSSAssetsPlugin({
+			assetNameRegExp: /\.css$/g,
+			cssProcessor: require('cssnano'),
+			cssProcessorOptions: {discardComments: {removeAll: true}},
+			canPrint: true
+		}),
 	]
 };

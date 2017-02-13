@@ -1,4 +1,38 @@
-<!DOCTYPE html>
+const LoadingBox = `<div class='loading-div'>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	<svg height='80' width='210'>
+	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+	</svg>
+	</div>`;
+
+export const Template = (StaticString = LoadingBox) => {
+	return (`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -233,40 +267,10 @@
 <body>
 
 <div id="root" class="root">
-    <div class='loading-div'>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-        <svg height='80' width='210'>
-            <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-        </svg>
-    </div>
+    ${StaticString}
 </div>
 
 <script src="/client.bundle.js" type="text/javascript"></script>
 </body>
-</html>
+</html>`);
+};
