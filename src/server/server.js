@@ -7,7 +7,7 @@ import {renderToString} from 'react-dom/server'
 import {Template} from '../client/Template/Template.jsx'
 
 const app = express(),
-	PORT = 5000,
+	PORT = proess.env.PORT || 5000,
 	MockBrowser = require('mock-browser').mocks.MockBrowser;
 
 global.document = MockBrowser.createDocument();
