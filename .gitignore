@@ -59,6 +59,6 @@ typings/
 # dotenv environment variables file
 .env
 dist/.well-known/
-dist/js
 *.bundle.js
 *.bundle.js.*
+/dist/js/
