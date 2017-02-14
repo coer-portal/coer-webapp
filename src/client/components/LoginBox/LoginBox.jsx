@@ -62,7 +62,7 @@ export default class LoginBox extends React.Component {
 		e.preventDefault();
 		console.log(this.state._id);
 		console.log(this.state.password);
-		axios.post("//coer-backend.herokuapp.com/login/student", {
+		axios.post("http://coer-backend.ishanjain.me:8080/login/student", {
 			_id: this.state._id,
 			password: this.state.password
 		}).then(result => {

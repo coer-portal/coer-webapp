@@ -87,27 +87,23 @@ export const Template = (StaticString) => {
     	
     </style>
 </head>
-    
 <body>
 <link rel="stylesheet" href="/index.css" media="none" onload="if(media!='all')media='all'">
 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <script src="/commons.js" type="text/javascript"></script>
 <script src="/vendor.js" type="text/javascript"></script>
-    
 <div id="root" class="root">
     ${StaticString}
 </div>
-
 <script src="/main.js" type="text/javascript"></script>
-<script type="text/javascript">
-	if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').then(function(reg) {
-        console.log('Successfully registered service worker', reg);
-    }).catch(function(err) {
-        console.warn('Error whilst registering service worker', err);
-    });
-}
-</script>
 </body>
 </html>`);
 };
+
+// <script type="text/javascript">
+// 	if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.register('./sw.js').then(function(reg) {
+//         console.log('Successfully registered service worker', reg);
+//     }).catch(function(err) {
+//         console.warn('Error whilst registering service worker', err);
+//     });
