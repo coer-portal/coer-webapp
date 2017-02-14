@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="837940c6-f9f2-4190-909c-b237e46d6264" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/0.server.bundle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/1.server.bundle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/2.server.bundle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/server.bundle.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/commons.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/main.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/sw.js" afterPath="$PROJECT_DIR$/dist/sw.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/Template/Template.jsx" afterPath="$PROJECT_DIR$/src/client/Template/Template.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/components/HomeButtonBox/HomeButtonBox.jsx" afterPath="$PROJECT_DIR$/src/client/components/HomeButtonBox/HomeButtonBox.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/components/HomePageLayout/HomePageLayout.jsx" afterPath="$PROJECT_DIR$/src/client/components/HomePageLayout/HomePageLayout.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/components/LoginBox/LoginBox.jsx" afterPath="$PROJECT_DIR$/src/client/components/LoginBox/LoginBox.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/routes.index.jsx" afterPath="$PROJECT_DIR$/src/client/routes.index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/server.js" afterPath="$PROJECT_DIR$/src/server/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.client.config.babel.js" afterPath="$PROJECT_DIR$/webpack.client.config.babel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.server.config.babel.js" afterPath="$PROJECT_DIR$/webpack.server.config.babel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,21 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webpack.client.config.babel.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="webpack.client.config.babel.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpack.client.config.babel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="504">
+              <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sw.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sw.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dist/sw.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="147">
+              <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -75,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/server/server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#1135#1735#0" expanded="false" />
               </folding>
@@ -87,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/client/Template/Template.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+              <caret line="46" column="22" lean-forward="false" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -97,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/src/client/components/HomePageLayout/HomePageLayout.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
-              <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+              <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
               <folding>
                 <element signature="e#25#66#0" expanded="true" />
               </folding>
@@ -154,8 +136,8 @@
         <option value="$PROJECT_DIR$/src/client/components/HomePageLayout/HomePageLayout.jsx" />
         <option value="$PROJECT_DIR$/src/client/Template/Template.jsx" />
         <option value="$PROJECT_DIR$/src/client/routes.index.jsx" />
-        <option value="$PROJECT_DIR$/dist/sw.js" />
         <option value="$PROJECT_DIR$/webpack.client.config.babel.js" />
+        <option value="$PROJECT_DIR$/dist/sw.js" />
       </list>
     </option>
   </component>
@@ -524,12 +506,12 @@
       <workItem from="1487040544322" duration="3694000" />
       <workItem from="1487050862308" duration="6651000" />
       <workItem from="1487064663894" duration="1258000" />
-      <workItem from="1487067910953" duration="7588000" />
+      <workItem from="1487067910953" duration="8389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53339000" />
+    <option name="totallyTimeSpent" value="54140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
@@ -863,7 +845,7 @@
     <entry file="file://$PROJECT_DIR$/src/client/Template/Template.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+          <caret line="46" column="22" lean-forward="false" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -871,7 +853,7 @@
     <entry file="file://$PROJECT_DIR$/src/client/components/HomePageLayout/HomePageLayout.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
-          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
           <folding>
             <element signature="e#25#66#0" expanded="true" />
           </folding>
@@ -891,25 +873,25 @@
     <entry file="file://$PROJECT_DIR$/src/server/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
             <element signature="e#1135#1735#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/sw.js">
+    <entry file="file://$PROJECT_DIR$/webpack.client.config.babel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        <state relative-caret-position="504">
+          <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.client.config.babel.js">
+    <entry file="file://$PROJECT_DIR$/dist/sw.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="147">
+          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
           <folding />
         </state>
       </provider>

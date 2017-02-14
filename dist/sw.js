@@ -1,4 +1,4 @@
-var cacheName = 'v2:static';
+var cacheName = 'v3:static';
 
 self.addEventListener('install', function (e) {
 	e.waitUntil(
@@ -24,8 +24,6 @@ self.addEventListener('fetch', function (event) {
 						cache.put(event.request, response.clone());
 						return response;
 					})
-				}).catch(function () {
-					return caches.match('./');
 				});
 		})
 	);
