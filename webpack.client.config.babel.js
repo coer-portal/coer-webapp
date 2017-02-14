@@ -11,8 +11,8 @@ module.exports = {
 	context: path.resolve(__dirname, './src/client'),
 	entry: './index.jsx',
 	output: {
-		path: path.resolve(__dirname, './dist'),
-		filename: 'client.bundle.js',
+		path: path.resolve(__dirname, './dist/js'),
+		filename: '[name].js',
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.sass', '.scss']
@@ -45,12 +45,11 @@ module.exports = {
 		]
 	},
 	plugins: [
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: 'commons',
-		// 	filename: 'common.js',
-		// minChunks: 2
-		// }),
-
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'commons',
+			filename: '[name].js',
+		minChunks: 2
+		}),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 		}),

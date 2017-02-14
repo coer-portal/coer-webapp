@@ -38,10 +38,9 @@ export const Template = (StaticString) => {
     <meta charset="UTF-8">
     <meta name="theme-color" content="#0a64a0"/>
     <link rel="manifest" href="/manifest.json">
-
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0"/>
     <title>COER Portal</title>
-    <!--<script src="/common.js" type="text/javascript"></script>-->
+    <script src="/static/commons.js" type="text/javascript"></script>
     <style>
         * {
             margin: 0;
@@ -289,16 +288,24 @@ export const Template = (StaticString) => {
     	}
     	
     </style>
+    <link rel="stylesheet" href="/static/index.css" media="none" onload="if(media!='all')media='all'">
 </head>
 <body>
-<link rel="stylesheet" href="/index.css" media="none" onload="if(media!='all')media='all'">
-<noscript><link rel="stylesheet" href="css.css"></noscript>
 
 <div id="root" class="root">
     ${StaticString}
 </div>
 
-<script src="/client.bundle.js" type="text/javascript"></script>
+<script src="/static/main.js" type="text/javascript"></script>
+<script type="text/javascript">
+	if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').then(function(reg) {
+        console.log('Successfully registered service worker', reg);
+    }).catch(function(err) {
+        console.warn('Error whilst registering service worker', err);
+    });
+}
+</script>
 </body>
 </html>`);
 };

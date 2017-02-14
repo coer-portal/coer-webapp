@@ -24,17 +24,16 @@ app.use(forceHTTPS);
 
 app.use('/assets', express.static(path.resolve(process.cwd(), 'dist', 'assets')));
 
-app.get('/client.bundle.js', (req, res) => {
-	res.sendFile(path.resolve(process.cwd(), 'dist', 'client.bundle.js'));
-});
-
-app.get('/index.css', (req, res) => {
-	res.sendFile(path.resolve(process.cwd(), 'dist', 'index.css'));
-});
+app.use('/static', express.static(path.resolve(process.cwd(), 'dist', 'js')));
 
 app.get('/manifest.json', (req, res) => {
 	res.sendFile(path.resolve(process.cwd(), 'dist', 'manifest.json'));
 });
+
+app.get('/sw.js', (req, res) => {
+	res.sendFile(path.resolve(process.cwd(), 'dist', 'sw.js'));
+});
+
 
 app.get('/*', (req, res) => {
 	const Routes = require('../client/routes.index');

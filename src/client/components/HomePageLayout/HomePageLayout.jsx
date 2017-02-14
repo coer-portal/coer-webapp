@@ -33,11 +33,11 @@ export class HomePageLayout extends React.Component {
 					className="HomeButtonBox">
 					{this.props.children}
 				</Box>
-				<Footer justify='between' size="large">
-					<Box direction="row" align="center" pad={{between: "medium"}}>
-
-					</Box>
-				</Footer>
+				{/*<Footer justify='between' size="large">*/}
+					{/*<Box direction="row" align="center" pad={{between: "medium"}}>*/}
+					{/**/}
+					{/*</Box>*/}
+				{/*</Footer>*/}
 			</App>
 		);
 	}
