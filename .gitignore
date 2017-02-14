@@ -58,8 +58,7 @@ typings/
 
 # dotenv environment variables file
 .env
-dist/client.bundle.js
-dist/common.js
-dist/server.bundle.js
-dist/server.bundle.js.map
-dist/index.css
+dist/.well-known/
+dist/js
+*.bundle.js
+*.bundle.js.*

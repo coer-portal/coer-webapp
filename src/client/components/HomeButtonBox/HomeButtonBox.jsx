@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 import Box from 'grommet/components/Box'
 import Button from 'grommet/components/Button'
 
-export class HomeButtonBox extends React.Component {
+export default class HomeButtonBox extends React.Component {
 	render() {
 		return (
 			<Box

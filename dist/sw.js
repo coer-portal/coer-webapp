@@ -5,10 +5,10 @@ self.addEventListener('install', function (e) {
 		caches.open(cacheName).then(function (cache) {
 			return cache.addAll([
 				'./',
-				'./static/index.css',
-				'./static/main.js',
-				'./static/commons.js',
-				'./assets/bg_login.png'
+				'./index.css',
+				'./main.js',
+				'./commons.js',
+				'./assets/bg_login.png',
 			]).then(function () {
 				self.skipWaiting();
 			});
@@ -19,10 +19,14 @@ self.addEventListener('install', function (e) {
 self.addEventListener('fetch', function (event) {
 	event.respondWith(
 		caches.match(event.request).then(function (response) {
-			if (response) {
-				return response;
-			}
-			return fetch(event.request);
+			return response || fetch(event.request).then(function (resp) {
+					return caches.open(cacheName).then(function (cache) {
+						cache.put(event.request, response.clone());
+						return response;
+					})
+				}).catch(function () {
+					return caches.match('./');
+				});
 		})
 	);
 });

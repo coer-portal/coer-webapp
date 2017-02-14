@@ -9,10 +9,14 @@ const extractSASS = new ExtractCssPlugin({
 
 module.exports = {
 	context: path.resolve(__dirname, './src/client'),
-	entry: './index.jsx',
+	entry: {
+		main: ['./index.jsx'],
+		vendor: ['react', 'react-dom']
+	},
 	output: {
 		path: path.resolve(__dirname, './dist/js'),
 		filename: '[name].js',
+		publicPath: '/',
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.sass', '.scss']
@@ -24,7 +28,7 @@ module.exports = {
 				exclude: /node_modules/,
 				use: [{
 					loader: 'babel-loader',
-					options: {presets: ['es2015', 'react', 'stage-0']},
+					options: {presets: ['es2015', 'react', 'stage-2']},
 				}]
 			},
 			{
@@ -47,8 +51,7 @@ module.exports = {
 	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'commons',
-			filename: '[name].js',
-		minChunks: 2
+			filename: '[name].js'
 		}),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)

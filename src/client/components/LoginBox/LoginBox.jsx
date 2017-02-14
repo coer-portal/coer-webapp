@@ -1,7 +1,7 @@
 import React from 'react'
 import Box from 'grommet/components/Box'
 
-export class LoginBox extends React.Component {
+export default class LoginBox extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 	}
