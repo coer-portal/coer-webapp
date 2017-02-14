@@ -22,9 +22,12 @@ app.use(compression());
 
 app.use(forceHTTPS);
 
+
 app.use('/assets', express.static(path.resolve(process.cwd(), 'dist', 'assets')));
 
 app.use('/static', express.static(path.resolve(process.cwd(), 'dist', 'js')));
+
+app.use('/.well-known', express.static(path.resolve(process.cwd(), 'dist', '.well-known')));
 
 app.get('/manifest.json', (req, res) => {
 	res.sendFile(path.resolve(process.cwd(), 'dist', 'manifest.json'));
