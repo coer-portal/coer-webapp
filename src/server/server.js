@@ -4,16 +4,23 @@ import path from 'path'
 import React from 'react'
 import {match, RouterContext} from 'react-router'
 import {renderToString} from 'react-dom/server'
-import {Template} from '../client/Template/Template.jsx'
+import {Template} from '../client/Template/Template'
+import spdy from 'spdy'
+import fs from 'fs'
+import forceHTTPS from '../forceHTTPS'
 
 const app = express(),
-	PORT = proess.env.PORT || 5000,
+	PORT = process.env.PORT || 5000,
 	MockBrowser = require('mock-browser').mocks.MockBrowser;
 
 global.document = MockBrowser.createDocument();
 global.window = MockBrowser.createWindow();
 
+app.disable('x-powered-by');
+
 app.use(compression());
+
+app.use(forceHTTPS);
 
 app.use('/assets', express.static(path.resolve(process.cwd(), 'dist', 'assets')));
 
@@ -21,10 +28,16 @@ app.get('/client.bundle.js', (req, res) => {
 	res.sendFile(path.resolve(process.cwd(), 'dist', 'client.bundle.js'));
 });
 
-app.disable('x-powered-by');
+app.get('/index.css', (req, res) => {
+	res.sendFile(path.resolve(process.cwd(), 'dist', 'index.css'));
+});
+
+app.get('/manifest.json', (req, res) => {
+	res.sendFile(path.resolve(process.cwd(), 'dist', 'manifest.json'));
+});
 
 app.get('/*', (req, res) => {
-	const Routes = require('../client/routes.index.jsx');
+	const Routes = require('../client/routes.index');
 	match({routes: Routes, location: req.url}, (err, redirect, RenderProps) => {
 		if (err) {
 			res.status(500).write(err.message);
@@ -49,8 +62,40 @@ app.get('/*', (req, res) => {
 
 	});
 });
+if (process.env.NODE_ENV == "production") {
 
-app.listen(PORT, (err) => {
-	if (err) throw err;
-	process.stdout.write(`Server Started on http://localhost:${PORT}\n`);
-});
+	let options = {
+		key: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/privkey.pem'),
+		ca: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/chain.pem'),
+		cert: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/fullchain.pem')
+	};
+	// https/2 server
+	spdy.createServer(options, app).listen(443, error => {
+		if (error) throw error;
+		process.stdout.write(`Server is now running on https://localhost:443\n\n`);
+	});
+
+	// http server that'll redirect users to https
+	app.listen(80, err => {
+		if (err) throw err;
+		process.stdout.write(`Server started on PORT: 80
+            `);
+	});
+} else {
+
+	let localOptions = {
+		key: fs.readFileSync(path.resolve('key.pem')),
+		cert: fs.readFileSync(path.resolve('cert.pem'))
+	};
+	// https/2 server
+	spdy.createServer(localOptions, app).listen(443, error => {
+		if (error) throw error;
+		process.stdout.write(`Server is now running on https://localhost:443\n\n`);
+	});
+
+	// http server that'll redirect users to https
+	app.listen(80, err => {
+		if (err) throw err;
+		process.stdout.write(`Server started on PORT: 80\n\n`)
+	})
+}

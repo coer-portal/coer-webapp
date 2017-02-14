@@ -1,43 +1,44 @@
-const LoadingBox = `<div class='loading-div'>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	<svg height='80' width='210'>
-	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
-	</svg>
-	</div>`;
+// const LoadingBox = `<div class='loading-div'>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	<svg height='80' width='210'>
+// 	<ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+// 	</svg>
+// 	</div>`;
 
-export const Template = (StaticString = LoadingBox) => {
+export const Template = (StaticString) => {
 	return (`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#0a64a0"/>
     <link rel="manifest" href="/manifest.json">
+
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0"/>
     <title>COER Portal</title>
     <!--<script src="/common.js" type="text/javascript"></script>-->
@@ -59,6 +60,9 @@ export const Template = (StaticString = LoadingBox) => {
             padding: 0;
             height: 100%;
             width: 100%;
+            background: url("/assets/bg_login.png");
+    		-webkit-background-size: cover;
+    		background-size: cover;
         }
 
         .loading-div {
@@ -262,9 +266,33 @@ export const Template = (StaticString = LoadingBox) => {
                 transform: translateY(5px) scale(1.3);
             }
         }
+  		@media screen { 
+ 			.HomePageLayout {
+    			height: 100%;
+	    		width: 100%;
+	    	}
+	  		.HomeButtonBox {
+	    		height: calc(100% - 172px);
+	    	}
+		}
+  	
+		@media screen and (min-width: 720px) {
+  			.HomeButtonBox {
+    			height: calc(100% - 190px);
+    		}
+		}
+
+  		@media screen and (min-width: 1160px) {
+  			#root {
+    			background: url("/assets/bg_login.png");
+    		}
+    	}
+    	
     </style>
 </head>
 <body>
+<link rel="stylesheet" href="/index.css" media="none" onload="if(media!='all')media='all'">
+<noscript><link rel="stylesheet" href="css.css"></noscript>
 
 <div id="root" class="root">
     ${StaticString}

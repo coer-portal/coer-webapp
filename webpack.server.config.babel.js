@@ -14,6 +14,9 @@ module.exports = {
 	externals: [NodeExternals({
 		whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i]
 	})],
+	resolve: {
+		extensions: ['.js', '.jsx', '.sass', '.scss']
+	},
 	module: {
 		rules: [
 			{

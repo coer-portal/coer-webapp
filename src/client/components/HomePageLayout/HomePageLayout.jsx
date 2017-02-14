@@ -7,7 +7,7 @@ import Heading from 'grommet/components/Heading'
 import Box from 'grommet/components/Box'
 import Footer from 'grommet/components/Footer'
 import Menu from 'grommet/components/Menu'
-import './HomePageLayout.sass'
+// import './HomePageLayout.sass'
 
 export class HomePageLayout extends React.Component {
 	constructor(props, context) {

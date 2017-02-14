@@ -62,3 +62,4 @@ dist/client.bundle.js
 dist/common.js
 dist/server.bundle.js
 dist/server.bundle.js.map
+dist/index.css

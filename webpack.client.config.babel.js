@@ -1,6 +1,11 @@
 import path from "path";
 import webpack from "webpack";
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import ExtractCssPlugin from 'extract-text-webpack-plugin'
+
+const extractSASS = new ExtractCssPlugin({
+	filename: 'index.css'
+});
 
 module.exports = {
 	context: path.resolve(__dirname, './src/client'),
@@ -8,6 +13,9 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, './dist'),
 		filename: 'client.bundle.js',
+	},
+	resolve: {
+		extensions: ['.js', '.jsx', '.sass', '.scss']
 	},
 	module: {
 		rules: [
@@ -21,7 +29,18 @@ module.exports = {
 			},
 			{
 				test: /\.(sass|scss)$/,
-				use: ['style-loader', 'css-loader', 'sass-loader']
+				use: extractSASS.extract({
+					loader: [{
+						loader: "css-loader"
+					},
+						{
+							loader: "sass-loader",
+							options: {
+								includePaths: ["node_modules"]
+							}
+						}],
+					fallback: "style-loader"
+				})
 			}
 		]
 	},
@@ -31,6 +50,7 @@ module.exports = {
 		// 	filename: 'common.js',
 		// minChunks: 2
 		// }),
+
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 		}),
@@ -47,5 +67,6 @@ module.exports = {
 			cssProcessorOptions: {discardComments: {removeAll: true}},
 			canPrint: true
 		}),
+		extractSASS
 	]
 };
