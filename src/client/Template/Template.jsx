@@ -40,13 +40,12 @@ export const Template = (StaticString) => {
     <link rel="manifest" href="/manifest.json">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0"/>
     <title>COER Portal</title>
-    <script src="/commons.js" type="text/javascript"></script>
-    <script src="/vendor.js" type="text/javascript"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
-        }
+            border: 0;
+          }
 
         html, body {
             height: 100%;
@@ -66,8 +65,7 @@ export const Template = (StaticString) => {
         }
 
   		@media screen { 
- 			.HomePageLayout {
-    			height: 100%;
+ 			.HomePage{
 	    		width: 100%;
 	    	}
 	  		.HomeButtonBox {
@@ -88,10 +86,14 @@ export const Template = (StaticString) => {
     	}
     	
     </style>
-    <link rel="stylesheet" href="/index.css" media="none" onload="if(media!='all')media='all'">
 </head>
+    
 <body>
-
+<link rel="stylesheet" href="/index.css" media="none" onload="if(media!='all')media='all'">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<script src="/commons.js" type="text/javascript"></script>
+<script src="/vendor.js" type="text/javascript"></script>
+    
 <div id="root" class="root">
     ${StaticString}
 </div>

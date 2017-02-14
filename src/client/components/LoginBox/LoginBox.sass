@@ -1,0 +1,79 @@
+@mixin Flex-Center
+  display: flex
+  justify-content: center
+  align-items: center
+
+@mixin Border-Curve
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  border-radius: 5px
+
+a
+  text-decoration: none
+
+.disabled
+  opacity: 0.65
+  
+.LoginBox
+  padding-top: 30px
+  font-family: 'sans-serif'
+  flex-direction: column
+  @include Flex-Center
+
+.LoginBoxForm
+  padding-top: 20px
+  width: 100%
+
+.LoginBoxInput
+  height: 2.5em
+  width: 100%
+  background: white
+  border-bottom: 5px solid lightslategrey
+  margin-bottom: 15px
+
+.LoginBoxFormSubmitWrapper
+  @include Flex-Center
+
+.LoginBoxFormSubmit
+  font-size: 20px
+  margin: 15px
+  padding: 15px 30px 15px 30px
+  background: orange
+  color: white
+  @include Border-Curve
+
+.PasswordInputFieldWrapper
+  height: 100%
+  @include Flex-Center
+
+.InputField
+  padding-left: 5px
+  background: transparent
+  font-size: 1.2em
+  text-align: left
+  width: 98%
+  height: 100%
+
+.LoginBoxRegisterWrapper
+  margin-bottom: 15px
+  @include Flex-Center
+
+@media screen and (min-width: 400px) and (orientation: portrait)
+  .LoginBox
+    padding-top: 40px
+
+@media screen and (min-width: 540px)
+  .LoginBox
+    padding-top: 60px
+
+@media screen and (min-width: 750px)
+  .LoginBox
+    padding-top: 70px
+
+@media screen and (min-width: 960px)
+  .LoginBox
+    padding-top: 80px
+
+@media screen and (min-width: 1140px)
+  .LoginBox
+    padding-top: 100px

@@ -1,4 +1,4 @@
-var cacheName = 'v3:static';
+var cacheName = 'v4:static';
 
 self.addEventListener('install', function (e) {
 	e.waitUntil(
