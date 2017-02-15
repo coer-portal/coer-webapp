@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router'
 import {Container, Row, Col} from 'react-grid-system'
-import axios from 'axios'
-
+import {Snackbar} from '../Snackbar/Snackbar'
+import {Header} from '../Header/Header'
+import loadPolyfill from '../../polyfills/LoadPolyfill'
 import './LoginBox.sass'
 
 export default class LoginBox extends React.Component {
@@ -11,14 +12,29 @@ export default class LoginBox extends React.Component {
 		this.attemptLogin = this.attemptLogin.bind(this);
 		this.handleIdInput = this.handleIdInput.bind(this);
 		this.handlePasswordInput = this.handlePasswordInput.bind(this);
+		this.handleRememberMeOption = this.handleRememberMeOption.bind(this);
 		this.state = {
 			_id: '',
 			password: '',
-			userType: 'student',
+			UserType: 'student',
 			Login: {
 				disabled: true,
 				Class: 'LoginBoxFormSubmit disabled'
-			}
+			},
+			SnackbarSpace: "",
+			RememberUser: false
+		}
+	}
+
+	componentDidMount() {
+		loadPolyfill();
+		if (!window.sessionStorage && !window.sessionStorage) {
+			this.setState({
+				SnackbarSpace: <Snackbar Message="Please Update your Browser!" Type="error"/>,
+				Login: {
+					disabled: true
+				}
+			});
 		}
 	}
 
@@ -58,27 +74,80 @@ export default class LoginBox extends React.Component {
 		}
 	}
 
+	handleRememberMeOption(e) {
+		this.setState({
+			RememberUser: !this.state.RememberUser
+		})
+	}
+
 	attemptLogin(e) {
 		e.preventDefault();
-		console.log(this.state._id);
-		console.log(this.state.password);
-		axios.post("http://coer-backend.ishanjain.me:8080/login/student", {
-			_id: this.state._id,
-			password: this.state.password
-		}).then(result => {
-			console.log(result);
-		}).catch(error => {
-			console.error(error);
+		let _deviceid = localStorage.getItem('_deviceid');
+
+		let headers = new Headers({
+			'content-type': 'application/json',
+			'password': this.state.password,
+			'_apikey': 'TESTING',
+			'_deviceid': _deviceid
 		});
+		let Request = {
+			method: 'POST',
+			headers: headers,
+			mode: 'cors',
+			cache: false,
+			body: JSON.stringify({
+				_id: this.state._id
+			})
+		};
+		fetch('http://localhost:5000/login/student', Request)
+			.then(result => {
+				return result.text()
+			})
+			.then(body => {
+				try {
+					let parseBody = JSON.parse(body);
+
+					// Set DeviceID
+					localStorage.setItem('_deviceid', parseBody.data._deviceid);
+
+					if (this.state.RememberUser) {
+						if (parseBody.accesstoken) {
+							sessionStorage.removeItem('accesstoken');
+							localStorage.setItem('accesstoken', parseBody.accesstoken);
+						}
+						// Set Expire time of 8*60*60 seconds
+						localStorage.setItem('expiretime', Math.round((new Date()).getTime() / 1000) + 432000);
+					}
+					if (!this.state.RememberUser) {
+						if (parseBody.accesstoken) {
+							localStorage.removeItem('accesstoken');
+							sessionStorage.setItem('accesstoken', parseBody.accesstoken);
+						}
+					}
+					this.setState({
+						SnackbarSpace: <Snackbar
+							Message={parseBody['message']}
+							Type={!parseBody.error ? 'success' : "error"}/>
+					});
+					setTimeout(() => {
+						this.setState({
+							SnackbarSpace: ''
+						});
+					}, 3000)
+				} catch (e) {
+					console.error(e);
+				}
+			})
+			.catch(error => {
+					console.log(error);
+				}
+			);
 	}
 
 	render() {
-
 		return (
 			<Container className="LoginBox">
-				<Row className="LoginBoxHeader">
-					<h1>Login</h1>
-				</Row>
+				<Header Title="Login"/>
 				<Row className="LoginBoxForm">
 					<Row>
 						<Col offset={{xs: 2, sm: 3, md: 4, lg: 4}} xs={8} sm={6} md={4} lg={4}
@@ -93,11 +162,24 @@ export default class LoginBox extends React.Component {
 							<Col xs={9} sm={10} className="PasswordInputFieldWrapper">
 								<input type="password" value={this.state.password} name="password" required
 									   placeholder="Password" onChange={this.handlePasswordInput}
-									   className="InputField"/>
+									   className="InputField"
+								/>
 							</Col>
 							<Col xs={3} sm={2} className="PasswordInputFieldWrapper">
 								<Link to="/forgot-password">Forgot?</Link>
 							</Col>
+						</Col>
+					</Row>
+					<Row>
+						<Col offset={{xs: 2, sm: 3, md: 4, lg: 4}} xs={8} sm={6} md={4} lg={4}>
+							<input
+								type="checkbox"
+								id="RememberMe"
+								checked={this.state.RememberUser}
+								onClick={this.handleRememberMeOption}
+								className="RememberMeCheckbox"
+							/>
+							<label htmlFor="RememberMe"> Remember Me</label>
 						</Col>
 					</Row>
 					<Row>
@@ -115,6 +197,7 @@ export default class LoginBox extends React.Component {
 						</Col>
 					</Row>
 				</Row>
+				{this.state.SnackbarSpace}
 			</Container>
 		)
 	}
