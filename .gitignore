@@ -1,0 +1,7 @@
+
+.idea/
+node_modules/
+*.log
+*.log*
+/dist/js
+/dist/server.*

@@ -1,0 +1,61 @@
+{
+  "name": "core-webapp",
+  "version": "1.0.0",
+  "description": "COER Portal Webapp built with preact",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "./node_modules/.bin/webpack --progress --config webpack.server.config.babel.js",
+    "build:client": "./node_modules/.bin/webpack --progress --config webpack.client.config.babel.js",
+    "watch:server": "./node_modules/.bin/webpack --progress --watch --config webpack.server.config.babel.js",
+    "watch:client": "./node_modules/.bin/webpack --progress --watch --config webpack.client.config.babel.js",
+    "start": "node dist/server.bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coer-portal/coer-webapp.git"
+  },
+  "keywords": [
+    "preact",
+    "PWA"
+  ],
+  "author": "Ishan Jain <github.com/ishanjain28>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coer-portal/coer-webapp/issues"
+  },
+  "homepage": "https://github.com/coer-portal/coer-webapp#readme",
+  "dependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-react-jsx": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "bluebird": "^3.4.7",
+    "compression": "^1.6.2",
+    "css-loader": "^0.26.1",
+    "cssnano": "^3.10.0",
+    "express": "^4.14.1",
+    "extract-text-webpack-plugin": "2.0.0-rc.3",
+    "mock-browser": "^0.92.12",
+    "node-sass": "^4.5.0",
+    "optimize-css-assets-webpack-plugin": "^1.3.0",
+    "preact": "^7.2.0",
+    "preact-compat": "^3.13.1",
+    "preact-redux": "^2.0.0",
+    "preact-render-to-string": "^3.6.0",
+    "react-grid-system": "^2.4.1",
+    "react-router": "^3.0.2",
+    "redux": "^3.6.0",
+    "sass-loader": "^6.0.0",
+    "spdy": "^3.4.4",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1",
+    "webpack-node-externals": "^1.5.4",
+    "whatwg-fetch": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-plugin-react": "^6.10.0"
+  }
+}
