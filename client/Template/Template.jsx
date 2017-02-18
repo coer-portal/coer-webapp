@@ -40,7 +40,6 @@ export const Template = (html, state) => {
 	        padding: 0;
 	        height: 100%;
 	        width: 100%;
-	        background: url("/assets/bg_login.png");
 			-webkit-background-size: cover;
 			background-size: cover;
 	    }
@@ -62,7 +61,6 @@ export const Template = (html, state) => {
 
 		@media screen and (min-width: 1160px) {
 			body {
-				background: url("/assets/bg_login.png");
 			}
 		}
 </style>

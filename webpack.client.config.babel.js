@@ -28,7 +28,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.(js|jsx|es6)$/,
 				exclude: /node_modules/,
 				use: [{
 					loader: 'babel-loader',
@@ -37,20 +37,8 @@ module.exports = {
 			},
 			{
 				test: /\.(sass|scss)$/,
-				use: extractSASS.extract({
-					loader: [{
-						loader: "css-loader"
-					},
-						{
-							loader: "sass-loader",
-							options: {
-								includePaths: ["node_modules"]
-							}
-						}],
-					fallback: "style-loader"
-				})
-			}
-		]
+				use: ["css-loader", "sass-loader", "style-loader"]
+			}]
 	},
 	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
@@ -60,19 +48,20 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 		}),
-		// new webpack.optimize.UglifyJsPlugin({
-		// 	compress: {warnings: false},
-		// 	mangle: true,
-		// 	sourcemap: false,
-		// 	beautify: false,
-		// 	dead_code: true
-		// }),
-		// new OptimizeCSSAssetsPlugin({
-		// 	assetNameRegExp: /\.css$/g,
-		// 	cssProcessor: require('cssnano'),
-		// 	cssProcessorOptions: {discardComments: {removeAll: true}},
-		// 	canPrint: true
-		// }),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {warnings: true},
+			mangle: true,
+			sourcemap: false,
+			beautify: false,
+			dead_code: true
+		}),
+		new OptimizeCSSAssetsPlugin({
+			assetNameRegExp: /\.css$/g,
+			cssProcessor: require('cssnano'),
+			cssProcessorOptions: {discardComments: {removeAll: true}},
+			canPrint: true
+		}),
 		extractSASS
 	]
-};
+}
+;
