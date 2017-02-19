@@ -65,7 +65,7 @@ export default class Login extends Component {
 				_id: this.state._id
 			})
 		};
-		fetch('http://localhost:5000/login/' + this.state.usertype.toLowerCase(), Request)
+		fetch('//coer-backend.ishanjain.me/login/' + this.state.usertype.toLowerCase(), Request)
 			.then(result => {
 				return result.text()
 			})

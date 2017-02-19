@@ -13,7 +13,7 @@ module.exports = {
 				'accesstoken': accesstoken,
 				'_deviceid': _deviceid
 			});
-			return fetch('http://localhost:5000/validate-token/student', {
+			return fetch('//coer-backend.ishanjain.me/validate-token/student', {
 				method: 'POST',
 				mode: 'cors',
 				cache: false,
