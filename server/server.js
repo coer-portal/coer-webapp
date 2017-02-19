@@ -16,7 +16,7 @@ app.disable('x-powered-by');
 
 app.use(compression());
 
-app.use(forceHTTPS);
+// app.use(forceHTTPS);
 
 // Directory where images are stored
 app.use('/assets', express.static(path.resolve(process.cwd(), 'dist', 'assets')));
