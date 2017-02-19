@@ -1,4 +1,4 @@
-let cacheName = 'v5:static';
+let cacheName = 'v1:static';
 
 self.addEventListener('install', function (e) {
 	e.waitUntil(
@@ -15,14 +15,16 @@ self.addEventListener('install', function (e) {
 });
 
 self.addEventListener('fetch', function (event) {
-	event.respondWith(
-		caches.match(event.request).then(function (response) {
-			return response || fetch(event.request).then(function (resp) {
-					return caches.open(cacheName).then(function (cache) {
-						cache.put(event.request, resp.clone());
-						return response;
-					})
-				});
-		})
-	);
+	if (event.request.url.indexOf("coer-backend") == -1) {
+		event.respondWith(
+			caches.match(event.request).then(function (response) {
+				return response || fetch(event.request).then(function (resp) {
+						return caches.open(cacheName).then(function (cache) {
+							cache.put(event.request, resp.clone());
+							return response;
+						})
+					});
+			})
+		);
+	}
 });
