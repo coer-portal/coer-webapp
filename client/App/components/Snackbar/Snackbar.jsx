@@ -1,7 +1,7 @@
-import {h} from 'preact'
+import {h, Component} from 'preact'
 import './Snackbar.sass'
 
-export class Snackbar extends React.Component {
+export class Snackbar extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
@@ -17,7 +17,7 @@ export class Snackbar extends React.Component {
 	SetColor(type) {
 		let choice = {
 			'error': () => {
-				return {backgroundColor: 'red', color: 'white'};
+				return {backgroundColor: '#e71d36', color: 'white'};
 			},
 			'success': () => {
 				return {backgroundColor: 'green', color: 'white'};
@@ -39,10 +39,5 @@ export class Snackbar extends React.Component {
 		)
 	}
 }
-
-Snackbar.propTypes = {
-	Message: React.PropTypes.string.isRequired,
-	Type: React.PropTypes.string.isRequired
-};
 
 

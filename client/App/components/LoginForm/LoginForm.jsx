@@ -16,6 +16,7 @@ export class LoginForm extends Component {
 							placeholder="COER ID"
 							onChange={props.HandleIDChange}
 							className="LoginIDInput"
+							autofocus
 							required/>
 					</div>
 				</label>
@@ -35,6 +36,21 @@ export class LoginForm extends Component {
 					</div>
 				</label>
 				<br/>
+				<div>
+					<input type="checkbox" onClick={props.RememberMeOnClick} /> Remember Me
+				</div>
+				<br/>
+				<div className="UserTypeRadioGroup">
+					<div>
+						<input type="radio" name="UserType" value="student" onClick={props.UserTypeOnClick}
+							   checked/>
+						Student
+					</div>
+					<div>
+						<input type="radio" name="UserType" value="warden" onClick={props.UserTypeOnClick}/> Warden
+					</div>
+				</div>
+				<br/>
 				<div className="RegisterLink">
 					<Link to="/register">New Here? Register Now!</Link>
 				</div>
@@ -45,7 +61,6 @@ export class LoginForm extends Component {
 						value="Login"
 						onClick={props.onClick}
 						className="LoginButton"
-						disabled={props.isLoginDisabled}
 					/>
 				</div>
 			</form>

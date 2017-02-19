@@ -1,4 +1,6 @@
-@media screen
+@import '../../../Style/mixins/breakpoints'
+
+@include breakpoint(default)
   #Snackbar
     visibility: hidden
     min-height: 30px
@@ -9,7 +11,7 @@
     -moz-border-radius: 2px
     border-radius: 2px
     z-index: 1
-    left: 50%
+    left: 53%
     bottom: 30px
     padding: 5px
     position: fixed

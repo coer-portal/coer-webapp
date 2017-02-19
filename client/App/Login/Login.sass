@@ -5,15 +5,24 @@
 @include breakpoint(default)
   .Login
     margin: 40px 10px 0 10px
-    background: $greywhite
+    background: #fcfcfc
+    @include FlexCenter
+    flex-direction: column
+    border-radius: 14px
+    max-width: 95%
+
+  .Login .Header
+    padding: 15px 0 15px 0
+
+  .SnackbarWrapper
     @include FlexCenter
     width: 100%
-    flex-direction: column
 
 @include breakpoint(mobile)
   .Login
     margin: 40px 0 0 0
-    background: $lightgrey
+    background: #ffffff
     @include FlexCenter
-    width: 100%
+    max-width: 100%
+    padding: 15px
     flex-direction: column
