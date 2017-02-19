@@ -5,3 +5,4 @@ node_modules/
 *.log*
 /dist/js
 /dist/server.*
+/dist/0.server.bundle.js
