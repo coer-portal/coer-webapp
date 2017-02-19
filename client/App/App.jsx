@@ -1,8 +1,6 @@
 import {h, Component, render} from 'preact'
-// import {Container} from 'react-grid-system'
-import {AppRoutes} from './App.Routes'
-import {Router, browserHistory} from 'react-router'
-
+import '../Style/defaults.sass'
+import './App.sass'
 
 export class App extends Component {
 	constructor() {
@@ -11,7 +9,8 @@ export class App extends Component {
 
 	render(props, state) {
 		return (
-			<div>
+			<div className="App">
+				<h1 className="PageHeader">COER PORTAL</h1>
 				{this.props.children}
 			</div>
 		)

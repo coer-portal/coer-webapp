@@ -1,0 +1,74 @@
+@import '../../../Style/mixins/breakpoints'
+@import '../../../Style/mixins/variables'
+@import '../../../Style/mixins/center'
+
+@include breakpoint(default)
+  .LoginForm
+    text-align: left
+    margin-left: 2.5%
+    margin-right: 2.5%
+    width: 95%
+
+  .LoginSubmitButton
+    height: 51px
+    font-size: 31px
+    padding: 10px
+    margin: 15px
+    background: $black
+    color: $greywhite
+
+  .LoginIDWrapper
+    width: 100%
+    height: 35px
+    @include FlexCenter
+    margin: 5px 0 0 0
+
+  .LoginIDInput
+    height: 35px
+    width: 100%
+    font-size: 27px
+
+  .LoginPasswordWrapper
+    background: #ffffff
+    margin: 5px 0 0 0
+    width: 100%
+    height: 35px
+    @include FlexCenter
+
+  .LoginPasswordInput
+    width: 79%
+    height: 35px
+    font-size: 27px
+
+  .ForgotLink
+    height: 35px
+    width: 21%
+    font-size: 20px
+    @include FlexCenter
+
+  .RegisterLink
+    height: 20px
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    margin: 0
+    padding: 5px
+
+  .LoginButtonWrapper
+    height: 50px
+    width: 100%
+    margin: 10px 0 10px 0
+    @include FlexCenter
+
+  .LoginButton
+    background: $black
+    color: $greywhite
+    font-size: 27px
+    border-radius: 5px
+    margin: 5px
+    padding: 10px
+
+  .LoginButton:disabled
+    color: black
+    background: $lightgrey
+    box-shadow: inset 0 0 10px black

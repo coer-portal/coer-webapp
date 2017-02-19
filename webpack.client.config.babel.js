@@ -1,11 +1,6 @@
 import path from "path";
 import webpack from "webpack";
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
-import ExtractCssPlugin from 'extract-text-webpack-plugin'
-
-const extractSASS = new ExtractCssPlugin({
-	filename: 'index.css'
-});
 
 module.exports = {
 	context: path.resolve(__dirname, './client'),
@@ -37,7 +32,20 @@ module.exports = {
 			},
 			{
 				test: /\.(sass|scss)$/,
-				use: ["css-loader", "sass-loader", "style-loader"]
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader'
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							includePaths: ["node_modules"]
+						}
+					}
+				]
 			}]
 	},
 	plugins: [
@@ -48,20 +56,19 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 		}),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {warnings: true},
-			mangle: true,
-			sourcemap: false,
-			beautify: false,
-			dead_code: true
-		}),
-		new OptimizeCSSAssetsPlugin({
-			assetNameRegExp: /\.css$/g,
-			cssProcessor: require('cssnano'),
-			cssProcessorOptions: {discardComments: {removeAll: true}},
-			canPrint: true
-		}),
-		extractSASS
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	compress: {warnings: true},
+		// 	mangle: true,
+		// 	sourcemap: false,
+		// 	beautify: false,
+		// 	dead_code: true
+		// }),
+		// new OptimizeCSSAssetsPlugin({
+		// 	assetNameRegExp: /\.css$/g,
+		// 	cssProcessor: require('cssnano'),
+		// 	cssProcessorOptions: {discardComments: {removeAll: true}},
+		// 	canPrint: true
+		// })
 	]
 }
 ;

@@ -1,0 +1,19 @@
+@import "../../Style/mixins/center"
+@import "../../Style/mixins/_variables.sass"
+@import '../../Style/mixins/_breakpoints.sass'
+
+@include breakpoint(default)
+  .Login
+    margin: 40px 10px 0 10px
+    background: $greywhite
+    @include FlexCenter
+    width: 100%
+    flex-direction: column
+
+@include breakpoint(mobile)
+  .Login
+    margin: 40px 0 0 0
+    background: $lightgrey
+    @include FlexCenter
+    width: 100%
+    flex-direction: column

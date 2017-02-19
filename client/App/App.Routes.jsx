@@ -21,12 +21,12 @@ export const AppRoutes = (
 		<Route path="/" getComponent={(location, cb) => {
 			require.ensure([], () => {
 				cb(null, require('./Dashboard/Dashboard').default)
-			});
+			}, "Dashboard");
 		}} onEnter={requireAuth}/>
 		<Route path="login" getComponent={(location, cb) => {
 			require.ensure([], () => {
 				cb(null, require('./Login/Login').default)
-			})
+			}, "Login")
 		}}/>
 	</Route>
 );
