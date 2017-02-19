@@ -21,18 +21,18 @@ export const Template = (html, state) => {
 			<div class="cssload-whirlpool"></div>
 		</div>
 	</div>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('./sw.js').then(function (reg) {
+			console.log('Successfully registered service worker', reg);
+			}).catch(function (err) {
+				console.warn('Error whilst registering service worker', err);
+			})
+		}
+	</script>
 	<script type="text/javascript" src="/commons.js" async></script>
 	<script type="text/javascript" src="/main.js" async></script>
 </body>
 </html>`);
 };
 
-// <script>
-// if ('serviceWorker' in navigator) {
-// navigator.serviceWorker.register('./sw.js').then(function(reg) {
-//    console.log('Successfully registered service worker', reg);
-// }).catch(function(err) {
-// 	console.warn('Error whilst registering service worker', err);
-// });
-// }
-// </script>

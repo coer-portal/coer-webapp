@@ -33,9 +33,9 @@ app.get('/manifest.json', (req, res) => {
 });
 
 // service worker
-// app.get('/sw.js', (req, res) => {
-// 	res.sendFile(path.resolve(process.cwd(), 'dist', 'sw.js'));
-// });
+app.get('/sw.js', (req, res) => {
+	res.sendFile(path.resolve(process.cwd(), 'dist', 'sw.js'));
+});
 //
 if (process.env.NODE_ENV == "production") {
 
