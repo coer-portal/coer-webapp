@@ -15,8 +15,8 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.jsx', '.sass', '.scss'],
 		"alias": {
-			"react": "preact-compat",
-			"react-dom": "preact-compat"
+			"react": "preact-compat/dist/preact-compat",
+			"react-dom": "preact-compat/dist/preact-compat",
 		}
 	},
 	devtool: 'source-map',
@@ -56,19 +56,19 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 		}),
-		// new webpack.optimize.UglifyJsPlugin({
-		// 	compress: {warnings: true},
-		// 	mangle: true,
-		// 	sourcemap: false,
-		// 	beautify: false,
-		// 	dead_code: true
-		// }),
-		// new OptimizeCSSAssetsPlugin({
-		// 	assetNameRegExp: /\.css$/g,
-		// 	cssProcessor: require('cssnano'),
-		// 	cssProcessorOptions: {discardComments: {removeAll: true}},
-		// 	canPrint: true
-		// })
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {warnings: true},
+			mangle: true,
+			sourcemap: false,
+			beautify: false,
+			dead_code: true
+		}),
+		new OptimizeCSSAssetsPlugin({
+			assetNameRegExp: /\.css$/g,
+			cssProcessor: require('cssnano'),
+			cssProcessorOptions: {discardComments: {removeAll: true}},
+			canPrint: true
+		})
 	]
 }
 ;

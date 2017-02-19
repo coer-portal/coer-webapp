@@ -12,15 +12,7 @@ export const Template = (html, state) => {
     <link rel="manifest" href="/manifest.json">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0"/>
     <title>COER</title>
-    <script>
-	if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').then(function(reg) {
-        console.log('Successfully registered service worker', reg);
-    }).catch(function(err) {
-        console.warn('Error whilst registering service worker', err);
-    });
-    }
-    </script>
+    
 </head>
 <body>
 	<script type="text/javascript" src="/commons.js"></script>
@@ -29,3 +21,14 @@ export const Template = (html, state) => {
 </html>`);
 };
 
+
+
+// <script>
+// if ('serviceWorker' in navigator) {
+// navigator.serviceWorker.register('./sw.js').then(function(reg) {
+//    console.log('Successfully registered service worker', reg);
+// }).catch(function(err) {
+// 	console.warn('Error whilst registering service worker', err);
+// });
+// }
+// </script>

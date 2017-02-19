@@ -33,25 +33,25 @@ app.get('/manifest.json', (req, res) => {
 });
 
 // service worker
-app.get('/sw.js', (req, res) => {
-	res.sendFile(path.resolve(process.cwd(), 'dist', 'sw.js'));
-});
-
+// app.get('/sw.js', (req, res) => {
+// 	res.sendFile(path.resolve(process.cwd(), 'dist', 'sw.js'));
+// });
+//
 if (process.env.NODE_ENV == "production") {
 
-	let options = {
-		key: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/privkey.pem'),
-		ca: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/chain.pem'),
-		cert: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/fullchain.pem')
-	};
+	// let options = {
+	// 	key: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/privkey.pem'),
+	// 	ca: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/chain.pem'),
+	// 	cert: fs.readFileSync('/etc/letsencrypt/live/coer-backend.ishanjain.me/fullchain.pem')
+	// };
 	// https/2 server
-	spdy.createServer(options, app).listen(443, error => {
-		if (error) throw error;
-		process.stdout.write(`Server is now running on https://localhost:443\n\n`);
-	});
-
+	// spdy.createServer(options, app).listen(443, error => {
+	// 	if (error) throw error;
+	// 	process.stdout.write(`Server is now running on https://localhost:443\n\n`);
+	// });
+	//
 	// http server that'll redirect users to https
-	app.listen(80, err => {
+	app.listen(3000, err => {
 		if (err) throw err;
 		process.stdout.write(`Server started on PORT: 80
             `);

@@ -9,7 +9,7 @@ export default class Login extends Component {
 
 		this.state._id = '';
 		this.state.password = '';
-		this.state.usertype = 'student';
+		this.state.usertype = 'Student';
 		this.state.Snackbar = '';
 		this.state.RememberUser = false;
 		this.HandleFormSubmit = this.HandleFormSubmit.bind(this);
@@ -37,6 +37,7 @@ export default class Login extends Component {
 		this.setState({
 			usertype: e.target.value
 		});
+		console.log(e.target.checked)
 	}
 
 	HandleRememberUser(e) {
@@ -64,7 +65,7 @@ export default class Login extends Component {
 				_id: this.state._id
 			})
 		};
-		fetch('http://localhost:5000/login/' + this.state.usertype, Request)
+		fetch('http://localhost:5000/login/' + this.state.usertype.toLowerCase(), Request)
 			.then(result => {
 				return result.text()
 			})
@@ -124,7 +125,7 @@ export default class Login extends Component {
 	render(props, state) {
 		return (
 			<div className="Login">
-				<h1 className="Header">Student Login</h1>
+				<h1 className="Header">{state.usertype} Login</h1>
 				<LoginForm
 					id={state._id}
 					password={state.password}
