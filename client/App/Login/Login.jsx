@@ -75,20 +75,20 @@ export default class Login extends Component {
 					if (parseBody.error != "E101") {
 						// Set DeviceID
 						localStorage.setItem('_deviceid', parseBody.data._deviceid);
+						localStorage.setItem('_id', parseBody.data._id);
 
-						if (this.state.RememberUser) {
-							if (parseBody.accesstoken) {
-								sessionStorage.removeItem('accesstoken');
-								localStorage.setItem('accesstoken', parseBody.accesstoken);
-							}
+						if (this.state.RememberUser && parseBody.accesstoken) {
+							sessionStorage.removeItem('accesstoken');
+							localStorage.setItem('accesstoken', parseBody.accesstoken);
+
 							// Set Expire time of 8*60*60 seconds
 							localStorage.setItem('expiretime', Math.round((new Date()).getTime() / 1000) + 432000);
 						}
-						if (!this.state.RememberUser) {
-							if (parseBody.accesstoken) {
-								localStorage.removeItem('accesstoken');
-								sessionStorage.setItem('accesstoken', parseBody.accesstoken);
-							}
+						if (!this.state.RememberUser && parseBody.accesstoken) {
+							localStorage.removeItem('accesstoken');
+							sessionStorage.setItem('accesstoken', parseBody.accesstoken);
+							// Set Expire time of 8*60*60 seconds
+							sessionStorage.setItem('expiretime', Math.round((new Date()).getTime() / 1000) + 432000);
 						}
 						this.setState({
 							Snackbar: <Snackbar
