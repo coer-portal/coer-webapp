@@ -9,7 +9,9 @@
     "build:client": "./node_modules/.bin/webpack --progress --config webpack.client.config.babel.js",
     "watch:server": "./node_modules/.bin/webpack --progress --watch --config webpack.server.config.babel.js",
     "watch:client": "./node_modules/.bin/webpack --progress --watch --config webpack.client.config.babel.js",
-    "start": "node dist/server.bundle.js"
+    "start": "node dist/server.bundle.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -51,10 +53,12 @@
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
     "webpack-node-externals": "^1.5.4",
-    "whatwg-fetch": "^2.0.2"
+    "whatwg-fetch": "^2.0.2",
+    "snyk": "^1.31.0"
   },
   "devDependencies": {
     "eslint": "^3.15.0",
     "eslint-plugin-react": "^6.9.0"
-  }
+  },
+  "snyk": true
 }
